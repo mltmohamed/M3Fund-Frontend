@@ -1,0 +1,28 @@
+footer {
+    padding: 10px;
+    background: #fff;
+    margin-top: 250px;
+  }
+
+  .about-btn {
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    background: #ffca28;
+    border: none;
+    padding: 5px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 170px;
+  }
+  .about-btn:hover {
+    background: #000;
+    color: #ffca28;
+    border: 2px solid #ffca28;
+    transform: scale(1.05);
+  }

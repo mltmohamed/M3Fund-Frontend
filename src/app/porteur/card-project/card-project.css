@@ -1,0 +1,76 @@
+.card-project {
+    font-family: 'Poppins', sans-serif;
+    background: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: 450px;
+    height: 250px;
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    margin-bottom: 10px;
+  }
+
+  .amount {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffca28;
+  }
+
+  .category {
+    background: #ff80ab;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+
+  .progress {
+    display: flex;
+    width: 100%;
+    height: 10px;
+    background: #ddd;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin: 10px 0;
+  }
+
+  .progress-bar {
+    height: 100%;
+    background: #4caf50;
+    border-radius: 5px;
+    display: block;
+  }
+
+  .details {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    color: #666;
+    margin-top: 40px;
+  }
+  .dateDebut{
+    font-weight: 500;
+  }
+  .dateFin{
+    font-weight: 500;
+    color: black;
+  }
+  .detailProgress {
+    font-size: 14px;
+    color: #666;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    justify-content: left;
+  }
+  .avancement {
+   margin-left: 230px;
+  }
+  .title{
+    font-weight: 800;
+  }

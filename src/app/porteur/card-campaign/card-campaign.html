@@ -1,0 +1,15 @@
+<div class="card-campaign">
+    <div class="card-header">
+      <span class="amount">{{ amount }}</span>
+      <span class="category">{{ category }}</span>
+    </div>
+    <p>{{ title }}</p>
+    <div class="progress">
+      <span class="progress-bar" [style.width]="progress"></span>
+    </div>
+    <div class="details">
+      <span class="collaborators">{{ collaborators }}</span>
+      <span class="dates">{{ dates }}</span>
+    </div>
+    <button class="action-btn" [class.donate]="action === 'Don'" [class.volunteer]="action === 'Bénévolat'">{{ action }}</button>
+  </div>

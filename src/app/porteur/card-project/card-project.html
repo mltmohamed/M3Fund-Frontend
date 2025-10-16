@@ -1,0 +1,22 @@
+<div class="card-project">
+    <div class="card-header">
+      <span class="amount">{{ amount }}</span>
+      <span class="category">{{ category }}</span>
+    </div>
+      <div class="progress">
+      <span class="progress-bar" [style.width]="progress"></span>
+    </div>
+    <div class="detailProgress">
+      <i class="fa-solid fa-people-group"></i>
+      <span class="collaborators">{{ collaborators }}</span>
+      <span class="avancement"> {{ avancement }}</span>
+    </div>
+    
+    <p class="title">{{ title }}</p>
+    <p>{{ description }}</p>
+
+    <div class="details">
+      <span class="dateDebut">{{ dateDebut }}</span>
+      <span class="dateFin">{{dateFin}}</span>
+    </div>
+  </div>
