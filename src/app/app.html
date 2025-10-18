@@ -1,77 +1,15 @@
-<div class="container">
-  <app-sidebar></app-sidebar>
-    
-    
-     <div class="main-content">
-      <app-navbar></app-navbar>
-      <main class="content">
-        <section class="projects">
-          <h2>Mes Projets actifs</h2>
-          <button class="view-all">Voir Tout ></button>
-          <div class="card-grid">
-            <app-card-project
-              [amount]="'250,000 FCFA récoltés'"
-              [category]="'Santé'"
-              [title]="'Plateforme de télémédecine'"
-              [description]="'Application mobile pour consultations médicales à distance avec suivi des patients.'"
-              [progress]="'31%'"
-              
-              [collaborators]="'21 Collaborateurs'"
-              [avancement]="'31 %'"
-              [dateDebut]="'Début: 01/09/2025'"
-              [dateFin]="'Fin: 09/12/2025'">
-            </app-card-project>
-            
-            <app-card-project
-              [amount]="'7,100,000 FCFA récoltés'"
-              [category]="'Éducation'"
-              [title]="'Construction d\'une École'"
-              [description]="'Construction d\'une école avec dispositifs intégrés pour le suivi pédagogique administratif des élèves.'"
-              [progress]="'67%'"
-              [collaborators]="'210 Collaborateurs'"
-              [avancement]="'67%'"
-             [dateDebut]="'Début: 01/10/2025'"
-             [dateFin]="'Fin: 01/10/2025'">
-           
-            </app-card-project>
-          </div>
-     
-        </section>
+ <div class="nav">
+   <app-navbar></app-navbar>
+ </div>
 
-        <section class="campaigns">
-          <h2>Mes campagnes en cours</h2>
-          <button class="view-all green">Voir Tout ></button>
-          <div class="card-grid">
-            <app-card-campaign
-              [amount]="'250,000 FCFA récoltés'"
-              [category]="'Santé'"
-              [title]="'Plateforme de télémédecine'"
-              [progress]="'31%'"
-              [collaborators]="'21 Collaborateurs'"
-              [dates]="'Fin: 09/12/2025'"
-              [action]="'Don'">
-            </app-card-campaign>
-            <app-card-campaign
-              [amount]="'7,100,000 FCFA récoltés'"
-              [category]="'Éducation'"
-              [title]="'Construction d\'une École'"
-              [progress]="'67%'"
-              [collaborators]="'210 Collaborateurs'"
-              [dates]="'Fin: 31/12/2025'"
-              [action]="'Don'">
-            </app-card-campaign>
-            <app-card-campaign
-              [amount]="'1,000,000 FCFA récoltés'"
-              [category]="'Santé'"
-              [title]="'Plateforme de télémédecine'"
-              [progress]="'31%'"
-              [collaborators]="'21 Collaborateurs'"
-              [dates]="'Fin: 09/12/2025'"
-              [action]="'Bénévolat'">
-            </app-card-campaign>
-          </div>
-        
-        </section>
-      </main>
-    </div>
+  <div class="layout">
+    <app-sidebar></app-sidebar>
+    <div class="content">
+     
+      <app-poteur-dashboard></app-poteur-dashboard>
+      <router-outlet></router-outlet>
   </div>
+  
+</div>
+
+  

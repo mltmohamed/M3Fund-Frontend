@@ -1,10 +1,17 @@
+/* ==================================
+   STYLES PAR DÉFAUT (GRAND ÉCRAN)
+   ================================== */
 footer {
     padding: 10px;
     background: #fff;
-    margin-top: 250px;
-  }
+    /* CLÉ : Suppression de la marge rigide (margin-top: 250px). 
+       Le .itemCenter (avec flex-grow: 1) le poussera automatiquement en bas. */
+    margin-top: auto; /* Marge automatique si jamais il reste de l'espace */
+    box-sizing: border-box; 
+    width: 100%; /* S'assure qu'il prend toute la largeur du conteneur */
+}
 
-  .about-btn {
+.about-btn {
     border-radius: 8px;
     display: flex;
     flex-direction: row;
@@ -18,11 +25,47 @@ footer {
     padding: 5px 15px;
     font-size: 16px;
     cursor: pointer;
-    width: 170px;
-  }
-  .about-btn:hover {
+    width: 100%; /* Rendre le bouton plein largeur du footer, pas une largeur fixe de 170px */
+    transition: all 0.2s ease;
+}
+
+.about-btn:hover {
     background: #000;
     color: #ffca28;
     border: 2px solid #ffca28;
-    transform: scale(1.05);
-  }
+    transform: scale(1.02); /* Réduit un peu l'effet pour que ça reste dans le conteneur */
+}
+
+/* ==================================
+   MEDIA QUERY (MOBILE - SIDEBAR MINI)
+   ================================== */
+@media (max-width: 768px) {
+    
+    /* Le footer est maintenant dans une sidebar de 80px de large */
+    footer {
+        padding: 10px 0; /* Padding horizontal retiré/réduit pour maximiser l'espace */
+    }
+
+    .about-btn {
+        width: 40px; /* Largeur fixe pour l'icône */
+        height: 40px; /* Hauteur fixe pour l'icône */
+        padding: 0;
+        margin: 0 auto; /* Centre le bouton dans la largeur du footer */
+        
+        /* Cacher le texte en conservant l'icône */
+        font-size: 0; 
+        
+        /* Le bouton devient un cercle parfait si vous voulez */
+        /* border-radius: 50%; */
+    }
+
+    /* Le flexbox garantit que l'icône est centrée */
+    .about-btn i {
+        font-size: 18px; /* Taille de l'icône restaurée */
+    }
+
+    /* Ajuster le survol pour que l'effet scale ne soit pas trop grand */
+    .about-btn:hover {
+        transform: scale(1.05);
+    }
+}

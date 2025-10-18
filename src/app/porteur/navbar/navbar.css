@@ -1,17 +1,20 @@
+/* Styles de base pour la Navbar */
 .navbar {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Espace les éléments aux extrémités */
     align-items: center;
     background: #000;
     color: #fff;
     padding: 10px 20px;
-    width: 1200px;
+    width: 100%; /* Prend toute la largeur disponible */
     border-top-left-radius: 40px;
-  }
+    box-sizing: border-box; /* IMPORTANT : Assure que le padding n'augmente pas la largeur */
+    /* Suppression du width: 1200px */
+}
 
-
-
-  .campaign-btn {
+/* Les boutons */
+.campaign-btn {
+    /* ... Vos styles actuels ... */
     font-family: 'Poppins', sans-serif;
     background: #E6B800;
     border: 3px solid #FFF;
@@ -20,18 +23,10 @@
     font-size: 16px;
     cursor: pointer;
     min-height: 40px;
-  }
-  .new-project-btn:hover, .campaign-btn:hover {
-    background: #000;
-    color: #E6B800;
-    border: 3px solid #E6B800;
-  }
-  .bell-icon:hover {
-    background: #000;
-    color: #E6B800;
-    border: 3px solid #E6B800;
-  }
-  .new-project-btn {
+}
+
+.new-project-btn {
+    /* ... Vos styles actuels ... */
     font-family: 'Poppins', sans-serif;
     background: #fff;
     border: 3px solid #000;
@@ -41,24 +36,32 @@
     cursor: pointer;
     min-height: 40px;
     font-weight: 550;
-    margin-left: 400px;
-  }
-  .new-project-btn span {
- 
+    /* Remplacement de la marge rigide par 'margin-right: auto' pour pousser le reste à droite */
+    margin-right: auto;
+    margin-left: 20px; /* Ajoute un petit espace entre les deux boutons */
+}
+
+/* Styles pour le signe '+' */
+.new-project-btn span {
     font-weight: bold;
     color: #E6B800;
     margin-left: 5px;
-  }
+}
 
-  .nav-icons {
+/* Les icônes de navigation */
+.nav-icons {
     display: flex;
     gap: 10px;
-  }
-  .bell-icon, .profile-icon {
+    /* Assure qu'il y a un peu d'espace avant les icônes sur les petits écrans */
+    margin-left: 10px;
+}
+
+/* Styles des icônes et du profil (inchangés) */
+.bell-icon, .profile-icon {
     font-size: 20px;
     cursor: pointer;
-  }
-  .bell-icon {
+}
+.bell-icon {
     border: 3px solid #fff;
     border-radius: 50%;
     height: 40px;
@@ -66,10 +69,97 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  .bell-icon img {
+}
+.bell-icon img {
     height: 40px;
     width: 40px;
     object-fit: cover;
     border-radius: 50%;
-  }
+}
+
+/* HOVER (inchangés) */
+.new-project-btn:hover, .campaign-btn:hover {
+    background: #000;
+    color: #E6B800;
+    border: 3px solid #E6B800;
+}
+.bell-icon:hover {
+    background: #000;
+    color: #E6B800;
+    border: 3px solid #E6B800;
+}
+@media (max-width: 600px) {
+
+    .navbar {
+        padding: 10px 10px; /* Réduit le padding pour gagner de l'espace */
+    }
+
+    /* Masque le texte "Nouveau projet" et "Campagne" */
+    .campaign-btn, .new-project-btn {
+        padding: 5px 10px; /* Réduit le padding du bouton */
+        font-size: 14px;
+    }
+
+    /* Raccourcit le bouton "Nouveau projet" pour ne laisser que le "+" */
+    .new-project-btn {
+        margin-left: 10px;
+    }
+
+    /* Raccourcit le bouton "Nouveau projet" pour ne laisser que le "+" */
+    .new-project-btn:not(:hover) { /* Sauf au survol, s'il y a un survol tactile */
+        width: 40px;
+        height: 40px;
+        /* Masque le texte du bouton en mode mobile */
+        font-size: 0;
+        padding: 0;
+        /* Positionne le "+" au centre */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Assure que le "+" est visible et centré */
+    .new-project-btn span {
+        font-size: 24px; /* Rend le "+" plus grand */
+        margin-left: 0;
+        color: #000; /* Le bouton est blanc, donc le + doit être noir (ou une autre couleur) */
+    }
+
+    /* Si vous voulez rendre l'icône de notification plus petite */
+    .bell-icon {
+        height: 35px;
+        width: 35px;
+        border-width: 2px;
+    }
+    .bell-icon img {
+        height: 35px;
+        width: 35px;
+    }
+}
+/* =========================================================
+   MEDIA QUERY : Optimisation pour la Mini Sidebar (768px)
+   ========================================================= */
+@media (max-width: 768px) {
+    /* Réduit l'espace entre le bouton "Nouveau projet" et les icônes */
+    .new-project-btn {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+}
+
+/* =========================================================
+   MEDIA QUERY : Optimisation de la Navbar pour TRES PETIT ÉCRAN (Mobile)
+   (Votre bloc existant, inclus ici pour référence)
+   ========================================================= */
+@media (max-width: 600px) {
+    /* ... Vos styles existants pour masquer le texte des boutons ... */
+    
+    .new-project-btn:not(:hover) { 
+        /* ... styles de réduction à l'icône + ... */
+    }
+
+    /* Assurez que les boutons restent alignés à gauche de la navbar */
+    .campaign-btn {
+        /* Assurez-vous que ce bouton ne soit pas masqué ou réduit si vous voulez le garder */
+    }
+}

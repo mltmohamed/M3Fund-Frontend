@@ -1,68 +1,142 @@
+/* =========================================================
+   STYLES DU LAYOUT GLOBAL (Revu pour la réactivité)
+   ========================================================= */
+
 body {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
-  }
-.projects h2{
-    font-family: 'Poppins', sans-serif;
-    font-size: 20px;
-  }
-.campaigns h2{
-    font-family: 'Poppins', sans-serif;
-    font-size: 20px;
-  }
-.container {
-    display: flex;
-    flex-direction: row;
-    height: 100vh;
-  }
-  .main-content {
-    display: flex;
-    flex-direction: column;
-  }
+}
 
-  .content {
+/* Le .content qui entoure toutes les sections, provenant de votre premier prompt */
+.content {
+    /* Ajout des styles commentés de votre premier prompt pour la cohérence */
     border-bottom-left-radius: 40px;
-    flex: 1;
+    flex: 1; /* Prend l'espace disponible */
     padding: 20px;
     background: #e0f7fa;
-  }
+    /* margin-left: 10px; (Maintenu, mais la marge principale est gérée sur .layout/.nav) */
+}
 
-  .projects, .campaigns {
-    margin-bottom: 20px;
-  }
-
-  h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-
-  .card-grid {
+.main-content {
     display: flex;
- 
-    gap: 20px;
-    /* margin-bottom: 10px; */
-  }
+    flex-direction: column;
+    /* Assure que ce conteneur s'étire si nécessaire */
+    width: 100%;
+}
 
-  .view-all {
-    margin-bottom:10px;
+.projects, .campaigns {
+    /* Utilise Flexbox pour aligner le titre et le bouton sur une ligne (plus tard) */
+    display: flex;
+    flex-wrap: wrap; /* Permet aux éléments d'aller à la ligne si besoin */
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Aligner le titre à gauche */
+.projects h2, .campaigns h2 {
+    font-size: 20px;
+    margin: 0; /* Suppression de la marge par défaut pour un meilleur alignement Flex */
+    font-family: 'Poppins', sans-serif;
+    /* Pour que le titre et le bouton soient sur la même ligne */
+    margin-right: auto;
+}
+
+/* =========================================================
+   GRILLE DE CARTES (CLÉ DE LA RÉACTIVITÉ)
+   ========================================================= */
+
+.card-grid {
+    /* REMPLACE LE FLEX RIGIDE PAR UNE GRILLE CSS FLEXIBLE */
+    display: grid;
+    /* Utilise la répétition automatique pour que les cartes s'ajustent */
+    /* minmax(280px, 1fr) signifie : largeur minimale de 280px, sinon prendre 1 fraction d'espace. */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 20px;
+    /* Important : La grille doit prendre toute la largeur disponible sous le titre/bouton. */
+    width: 100%; 
+    margin-top: 15px; /* Espace entre le titre/bouton et la grille */
+}
+
+/* Les cartes doivent s'étirer dans la grille */
+app-card-project,
+app-card-campaign {
+    display: block; /* Nécessaire pour les composants Angular dans une grille */
+    width: 100%;
+}
+
+/* =========================================================
+   BOUTON VOIR TOUT (Suppression de la marge rigide)
+   ========================================================= */
+
+.view-all {
+    margin: 0; /* Suppression de margin-left: 1080px ! */
+    margin-left: 20px; /* Ajoute un petit espace à droite du titre */
+    
+    /* Styles inchangés */
     font-family: 'Poppins', sans-serif;
     background: #000;
     color: #fff;
     padding: 5px 15px;
     border-radius: 8px;
     cursor: pointer;
-    margin-left: 1080px;
     border: 3px solid #FFF;
     font-size: 16px;
-    cursor: pointer;
     min-height: 40px;
-  }
-    .view-all:hover {
-        background: #fff;
-        color: #000;
-        border: 3px solid #000;
-    }
-  .view-all.green {
+    /* Assure qu'il est bien aligné */
+    align-self: flex-start; 
+    white-space: nowrap; /* Empêche le bouton d'aller à la ligne */
+}
+
+/* Les sections .projects et .campaigns doivent contenir leurs éléments */
+/* En utilisant `display: flex; flex-wrap: wrap;` sur `.projects, .campaigns` 
+   et `margin-right: auto` sur `h2`, on garantit que `h2` prend 
+   la majeure partie de l'espace et pousse le bouton `view-all` à droite. */
+
+/* Ajustements pour les couleurs */
+.view-all.green {
     background: #4caf50;
-  }
+    border: 3px solid #4caf50;
+    color: #fff;
+}
+.view-all.green:hover {
+    background: #fff;
+    color: #4caf50;
+    border: 3px solid #4caf50;
+}
+
+/* Styles de survol */
+.view-all:hover {
+    background: #fff;
+    color: #000;
+    border: 3px solid #000;
+}
+
+/* =========================================================
+   MEDIA QUERY : Empilement du titre et du bouton sur mobile
+   ========================================================= */
+@media (max-width: 600px) {
+    /* Le titre et le bouton s'empilent sur les petits écrans */
+    .projects, .campaigns {
+        flex-direction: column;
+        align-items: flex-start; /* Alignement à gauche */
+    }
+
+    .projects h2, .campaigns h2 {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    .view-all {
+        width: 100%; /* Le bouton prend toute la largeur */
+        margin-left: 0;
+        margin-bottom: 15px;
+        align-self: center;
+        text-align: center;
+    }
+    
+    .content {
+        padding: 10px; /* Réduit le padding du dashboard */
+    }
+}

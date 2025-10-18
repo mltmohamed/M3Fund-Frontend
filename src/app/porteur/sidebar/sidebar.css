@@ -1,69 +1,174 @@
+/* =================================
+   STYLES PAR DÉFAUT (GRAND ÉCRAN)
+   ================================= */
 .sidebar {
-    /* border: 1px solid #ddd;  */
-    height: 650px;
-    width: 200px;
+    height: 100vh; /* Remplir toute la hauteur de la vue */
+    width: 250px; /* Largeur par défaut */
     background: #fff;
-    padding: 20px;
-    top: 0px;
+    padding: 20px 0; /* Padding vertical, padding horizontal géré dans les items */
+    top: 0;
+    left: 0;
+    position: fixed; /* La barre reste toujours visible */
     display: flex;
     flex-direction: column;
     font-family: 'Poppins', sans-serif;
-    
-  }
-  .sidebar-item:hover{
-    width: 200px;
-    background: #000;
-    color: #FFF;
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-    cursor: pointer;
-  }
-  .sidebar-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 15px 0;
-    font-size: 16px;
-    /* border: 1px solid #000; */
-    width: 100%;
-  }
+    box-sizing: border-box;
+    z-index: 1000;
+}
 
-  .icon {
-    margin-right: 10px;
-    font-size: 18px;
-  }
-.logo {
-    margin-left: 40px;
-    font-family: 'Poppins', sans-serif;
-    letter-spacing: 8px;
-    font-size: 25px;
-  }
-.a{
-    color: #06A664;
-}
-.b{
-    color: #E6B800;
-}
-.c{
-    color: #000000;
-}
-.itemCenter{
-    /* border: 1px solid #000; */
+/* Le conteneur principal des liens doit prendre tout l'espace restant pour pousser le footer */
+.itemCenter {
     display: flex;
     flex-direction: column;
     margin-top: 1em;
     gap: 0.3em;
+    flex-grow: 1; /* C'EST LA CLÉ : Permet de pousser le footer vers le bas */
 }
-.proj{
-    margin-right: 48px;
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    /* Alignement à gauche pour l'affichage complet du texte */
+    justify-content: flex-start; 
+    padding: 15px 20px; /* Padding pour l'espace intérieur */
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
 }
-.message{
-    margin-right: 15px;
+
+.icon {
+    margin-right: 15px; /* Espace entre l'icône et le texte */
+    font-size: 18px;
 }
-.fonds{
-    margin-right: 38px;
+
+/* Règle pour supprimer les marges rigides dans le HTML */
+.proj, .message, .fonds, .param, .dash {
+    margin: 0; /* Annule toutes les marges rigides */
+    display: flex;
+    align-items: center;
 }
-.param{
-    margin-left: 10px;
+
+/* Logo */
+.logo {
+    padding: 0 20px 20px; /* Ajoute le padding pour qu'il s'aligne avec les items */
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 5px; 
+    font-size: 25px;
+}
+
+/* Styles de survol et couleurs (inchangés) */
+.sidebar-item:hover{
+    width: 100%;
+    background: #000;
+    color: #FFF;
+    border-radius: 8px 0 0 8px; /* Seulement à gauche, car le contenu est à droite */
+    cursor: pointer;
+}
+.a{ color: #06A664; }
+.b{ color: #E6B800; }
+.c{ color: #000000; }
+
+/* =================================
+   MEDIA QUERY (MOBILE - SIDEBAR MINI)
+   ================================= */
+@media (max-width: 768px) {
+    /* 1. Réduire la largeur de la sidebar */
+    .sidebar {
+        width: 80px; /* Nouvelle largeur réduite */
+    }
+    
+    /* 2. Cacher le texte des éléments de menu */
+    .sidebar-item {
+        /* Centrer les icônes dans la nouvelle largeur */
+        justify-content: center; 
+        padding: 15px 0; /* Padding horizontal retiré */
+    }
+
+    /* Le texte de l'élément de menu (qui n'est pas l'icône) est masqué */
+    .sidebar-item > div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 0; /* Cache le texte du lien */
+    }
+
+    .icon {
+        margin-right: 0; /* Supprime la marge de l'icône */
+        font-size: 24px; /* Rend l'icône un peu plus grande */
+    }
+
+    /* 3. Ajuster le logo */
+    .logo {
+        padding: 0;
+        text-align: center;
+        letter-spacing: normal;
+        font-size: 0; /* Cache le texte du logo par défaut */
+        padding-bottom: 20px;
+    }
+    
+    /* On choisit d'afficher seulement le 'm' du logo */
+    .logo .a {
+        font-size: 30px; 
+    }
+    .logo .b, .logo .c {
+        display: none; /* Cache le reste du nom du logo */
+    }
+    
+    /* 4. Ajuster le style de survol pour la mini-sidebar */
+    .sidebar-item:hover {
+        /* Ajuste la bordure pour que le coin soit de l'autre côté de la mini-sidebar */
+        border-radius: 0 8px 8px 0; 
+    }
+}
+/* =================================
+   MEDIA QUERY (MOBILE - SIDEBAR MINI)
+   ================================= */
+@media (max-width: 768px) {
+    /* 1. Réduire la largeur de la sidebar */
+    .sidebar {
+        width: 80px; /* Nouvelle largeur réduite */
+    }
+    
+    /* 2. Cacher le texte des éléments de menu */
+    .sidebar-item {
+        /* Centrer les icônes dans la nouvelle largeur */
+        justify-content: center; 
+        padding: 15px 0; /* Padding horizontal retiré */
+    }
+
+    /* Le texte de l'élément de menu (qui n'est pas l'icône) est masqué */
+    .sidebar-item > div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 0; /* Cache le texte du lien */
+    }
+
+    .icon {
+        margin-right: 0; /* Supprime la marge de l'icône */
+        font-size: 24px; /* Rend l'icône un peu plus grande */
+    }
+
+    /* 3. Ajuster le logo */
+    .logo {
+        padding: 0;
+        text-align: center;
+        letter-spacing: normal;
+        font-size: 0; /* Cache le texte du logo par défaut */
+        padding-bottom: 20px;
+    }
+    
+    /* On choisit d'afficher seulement le 'm' du logo */
+    .logo .a {
+        font-size: 30px; 
+    }
+    .logo .b, .logo .c {
+        display: none; /* Cache le reste du nom du logo */
+    }
+    
+    /* 4. Ajuster le style de survol pour la mini-sidebar */
+    .sidebar-item:hover {
+        /* Ajuste la bordure pour que le coin soit de l'autre côté de la mini-sidebar */
+        border-radius: 0 8px 8px 0; 
+    }
 }

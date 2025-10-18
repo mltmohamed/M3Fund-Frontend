@@ -4,73 +4,130 @@
     border-radius: 10px;
     padding: 15px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    width: 450px;
-    height: 250px;
-  }
+    /* CLÉ DE LA RÉACTIVITÉ : Suppression des dimensions fixes */
+    width: auto; 
+    height: auto; 
+    box-sizing: border-box; /* Assure que le padding ne fait pas déborder la carte */
+}
 
-  .card-header {
+/* --- En-tête (Montant et Catégorie) --- */
+.card-header {
     display: flex;
     justify-content: space-between;
-    align-items:center;
+    align-items: center;
     margin-bottom: 10px;
-  }
+}
 
-  .amount {
+.amount {
     font-size: 18px;
     font-weight: bold;
     color: #ffca28;
-  }
+}
 
-  .category {
+.category {
     background: #ff80ab;
     color: #fff;
     padding: 5px 10px;
     border-radius: 5px;
-  }
+    /* Pour la réactivité : gère les longues catégories */
+    max-width: 50%; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+}
 
-  .progress {
-    display: flex;
+/* --- Barres de Progression --- */
+.progress {
     width: 100%;
     height: 10px;
     background: #ddd;
     border-radius: 5px;
-    margin-top: 10px;
     margin: 10px 0;
-  }
+}
 
-  .progress-bar {
+.progress-bar {
     height: 100%;
     background: #4caf50;
     border-radius: 5px;
     display: block;
-  }
+}
 
-  .details {
-    display: flex;
-    justify-content: space-between;
-    font-size: 16px;
-    color: #666;
-    margin-top: 40px;
-  }
-  .dateDebut{
-    font-weight: 500;
-  }
-  .dateFin{
-    font-weight: 500;
-    color: black;
-  }
-  .detailProgress {
+/* --- Détails de Progression (Collaborateurs & Avancement) --- */
+.detailProgress {
     font-size: 14px;
     color: #666;
     display: flex;
     flex-direction: row;
-    gap: 20px;
     align-items: center;
-    justify-content: left;
-  }
-  .avancement {
-   margin-left: 230px;
-  }
-  .title{
+    /* Utilise space-between pour pousser l'avancement à droite */
+    justify-content: space-between; 
+    margin-bottom: 10px;
+}
+
+.detailProgress i {
+    margin-right: 5px; /* Espace après l'icône */
+}
+
+.collaborators {
+    /* Maintient les collaborateurs près de l'icône */
+    margin-right: auto;
+    margin-left: 5px; 
+}
+
+.avancement {
+    /* CLÉ DE LA RÉACTIVITÉ : Remplace la marge fixe (230px) */
+    margin-left: 10px; 
+    /* L'utilisation de justify-content: space-between sur .detailProgress 
+       garantit que celui-ci sera poussé à droite, quelle que soit la taille. */
+}
+
+/* --- Titre et Description --- */
+.title {
     font-weight: 800;
-  }
+    margin: 5px 0;
+}
+
+.card-project > p {
+    margin-bottom: 15px;
+}
+
+/* --- Dates (Bas de carte) --- */
+.details {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    color: #666;
+    margin-top: 15px; /* Réduit la marge pour plus de compacité */
+}
+
+.dateDebut {
+    font-weight: 500;
+}
+
+.dateFin {
+    font-weight: 500;
+    color: black;
+}
+
+
+/* ------------------------------------------------------------------ */
+/* MEDIA QUERY : Ajustement pour les très petits écrans (Mobile) */
+/* ------------------------------------------------------------------ */
+@media (max-width: 480px) {
+    .card-project {
+        padding: 10px;
+    }
+    
+    .amount {
+        font-size: 16px;
+    }
+
+    .category {
+        padding: 3px 8px; 
+        font-size: 13px;
+    }
+    
+    .details {
+        font-size: 14px;
+    }
+}
