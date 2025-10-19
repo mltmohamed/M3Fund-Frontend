@@ -1,6 +1,11 @@
 <div class="onboarding-page">
-    <div class="registration-card">
+    
+    <button class="back-btn" (click)="goBack()">
+        <i class="fa-solid fa-arrow-left"></i> Retour
+    </button>
 
+    <div class="registration-card">
+        
         <div class="logo">
             <span class="logo-m">m³</span><span class="logo-fund">Fund</span>
         </div>
@@ -8,7 +13,7 @@
         <h1 class="form-title">Inscription</h1>
         <p class="form-subtitle">Créer un compte pour commencer</p>
 
-        <form class="registration-form">
+        <form class="registration-form" (ngSubmit)="onSubmit()">
             <div class="form-fields">
                 <div class="input-group">
                     <label for="nom">Nom</label>
@@ -56,7 +61,7 @@
                     <label for="releve">Relevé bancaire <span class="optional">(facultatif)</span></label>
                     <div class="file-input-container">
                         <input type="file" id="releve" name="releve" class="actual-file-input">
-                        <span class="file-placeholder"><i class="fa-solid fa-upload"></i></span>
+                        <span class="file-placeholder">Choisir un fichier... <i class="fa-solid fa-upload"></i></span>
                     </div>
                 </div>
                 
@@ -74,9 +79,17 @@
                 <div class="profile-upload">
                     <p class="profile-label">Choisissez une photo de profil</p>
                     <div class="photo-container">
-                        <img src="assets/images/placeholder_profil.jpg" alt="Photo de profil" class="profile-pic" id="profile-preview">
-                       <input type="file" id="profile-file-input" class="actual-profile-file-input" accept="image/*" (change)="onFileSelected($event)">
-                        <label for="profile-file-input" class="upload-icon-label">
+                        <img [src]="profileImagePreview || 'assets/images/placeholder_profil.jpg'" 
+                             alt="Photo de profil" 
+                             class="profile-pic">
+                        
+                        <input type="file" 
+                               #profileFileInput 
+                               class="actual-profile-file-input" 
+                               accept="image/*" 
+                               (change)="onFileSelected($event)">
+                        
+                        <label for="profile-file-input" class="upload-icon-label" (click)="profileFileInput.click()">
                             <i class="fa-solid fa-camera upload-icon"></i>
                         </label>
                     </div>
