@@ -1,0 +1,275 @@
+/* =========================================================
+   STYLES GÉNERAUX ET CONTENEUR
+   ========================================================= */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    background: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.onboarding-page {
+    width: 90%;
+    max-width: 1050px; /* Largeur maximale augmentée pour le formulaire */
+    padding: 20px;
+}
+
+.registration-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    padding: 50px 60px; /* Padding augmenté pour un plus grand contour */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* --- Têtes de section --- */
+.logo {
+    text-align: left;
+    font-size: 26px; /* Taille de police légèrement augmentée */
+    font-weight: 700;
+    margin-bottom: 25px; /* Marge augmentée */
+}
+.logo-m { color: #06A664; }
+.logo-fund { color: #000; }
+
+.form-title {
+    font-size: 32px; /* Taille de police légèrement augmentée */
+    font-weight: 600;
+    margin-bottom: 8px; /* Marge ajustée */
+}
+.form-subtitle {
+    font-size: 15px; /* Taille de police ajustée */
+    color: #666;
+    margin-bottom: 35px; /* Marge augmentée */
+}
+
+/* =========================================================
+   GRILLE DU FORMULAIRE (DESKTOP - 2 COLONNES)
+   ========================================================= */
+.form-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 30px 60px; /* Espacement vertical et horizontal augmenté */
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0; /* Géré par le gap de la grille */
+}
+
+.input-group label {
+    font-size: 15px; /* Taille de police légèrement augmentée */
+    font-weight: 500;
+    margin-bottom: 8px; /* Marge augmentée */
+    color: #333;
+}
+
+.input-group input:not([type="file"]):not(.actual-profile-file-input) {
+    padding: 12px; /* Padding augmenté pour élargir les champs */
+    border: 1px solid #ccc;
+    border-radius: 6px; /* Rayon de bordure légèrement augmenté */
+    font-size: 16px; /* Taille de police augmentée */
+}
+
+.input-group .optional {
+    color: #aaa;
+    font-weight: 400;
+    font-style: italic;
+    margin-left: 5px;
+}
+
+/* --- Styles spécifiques pour les champs d'upload (file) --- */
+.file-input-container {
+    position: relative;
+    display: flex;
+}
+
+.actual-file-input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.file-placeholder {
+    display: flex; /* Utilise flex pour positionner l'icône à droite */
+    justify-content: flex-end; /* Pousse l'icône à droite */
+    align-items: center;
+    width: 100%;
+    padding: 12px; /* Padding augmenté */
+    border: 1px solid #ccc;
+    border-radius: 6px; /* Rayon de bordure légèrement augmenté */
+    font-size: 16px; /* Taille de police augmentée */
+    color: #999;
+    background: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.file-placeholder i {
+    color: #333;
+    margin-left: 10px;
+}
+
+/* --- Photo de Profil --- */
+.profile-upload-area {
+    grid-column: 2 / 3; 
+    /* Ajustement des lignes pour bien positionner par rapport aux champs */
+    grid-row: 5 / span 3; 
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding-top: 15px; /* Ajustement vertical pour coller l'image */
+}
+
+.profile-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centré au sein de son propre conteneur */
+    margin-top: 5px; 
+}
+
+.profile-label {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 12px; /* Marge augmentée */
+}
+
+.photo-container {
+    position: relative;
+    width: 120px; /* Largeur de la photo augmentée */
+    height: 120px; /* Hauteur de la photo augmentée */
+}
+
+.profile-pic {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #06A664; /* Bordure plus épaisse */
+}
+
+/* Input file réel caché pour la photo de profil */
+.actual-profile-file-input {
+    display: none; 
+}
+
+/* Label pour l'icône de la caméra, qui agit comme un bouton pour l'input caché */
+.upload-icon-label {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background: #ffca28;
+    color: #fff;
+    border-radius: 50%;
+    padding: 6px; /* Padding augmenté pour l'icône */
+    font-size: 16px; /* Taille de l'icône ajustée */
+    cursor: pointer;
+    border: 2px solid #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.2s;
+}
+
+.upload-icon-label:hover {
+    background: #e6b800;
+}
+
+
+/* --- Bouton d'enregistrement --- */
+.register-btn {
+    background: #ffca28;
+    color: #333; 
+    border: none;
+    border-radius: 8px;
+    padding: 12px 35px; /* Padding augmenté */
+    font-size: 18px; /* Taille de police augmentée */
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 40px; /* Marge augmentée */
+    float: right; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+    transition: background 0.2s;
+}
+
+.register-btn:hover {
+    background: #e6b800;
+}
+
+/* =========================================================
+   MEDIA QUERY (MOBILE - 1 COLONNE)
+   ========================================================= */
+@media (max-width: 768px) {
+    .registration-card {
+        padding: 30px 20px;
+    }
+    
+    .form-fields {
+        grid-template-columns: 1fr;
+        gap: 20px; /* Réduit le gap sur mobile */
+    }
+    
+    .input-group {
+        margin-bottom: 0; /* Géré par le gap de la grille */
+    }
+
+    .profile-upload-area {
+        grid-column: auto;
+        grid-row: auto;
+        justify-content: center;
+        margin: 20px 0;
+        padding-top: 0;
+    }
+    
+    .profile-upload {
+        align-items: center; 
+    }
+    
+    .profile-label {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .register-btn {
+        width: 100%; 
+        float: none;
+    }
+}
+
+/* Media Query pour les très petits écrans si besoin de plus de compacité */
+@media (max-width: 480px) {
+    .registration-card {
+        padding: 20px 15px;
+    }
+    .form-title {
+        font-size: 26px;
+    }
+    .form-subtitle {
+        font-size: 13px;
+    }
+    .logo {
+        font-size: 22px;
+    }
+    .input-group label, .profile-label {
+        font-size: 14px;
+    }
+    .input-group input:not([type="file"]):not(.actual-profile-file-input),
+    .file-placeholder {
+        padding: 10px;
+        font-size: 14px;
+    }
+    .register-btn {
+        padding: 10px 25px;
+        font-size: 16px;
+    }
+}

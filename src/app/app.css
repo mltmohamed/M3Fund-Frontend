@@ -10,6 +10,11 @@
     width: auto; 
     transition: margin-left 0.3s ease; /* Ajout d'une transition pour le redimensionnement */
 }
+.intro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .layout{
     border-bottom-left-radius: 40px;
     flex: 1;

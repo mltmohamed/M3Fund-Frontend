@@ -1,0 +1,150 @@
+/* =========================================================
+   STYLES DU CONTENEUR GLOBAL (Centrage)
+   ========================================================= */
+
+/* Le body doit être là où ces styles sont appliqués, ou un conteneur parent */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh; /* Assure que le body prend toute la hauteur */
+    display: flex; /* Pour centrer le contenu verticalement/horizontalement */
+    justify-content: center;
+    align-items: center;
+    background: #f7f7f7; /* Couleur de fond légèrement différente du blanc */
+}
+
+.onboarding-page {
+    /* Le conteneur qui fixe la largeur maximale pour la carte */
+    width: 90%; 
+    max-width: 900px;
+    padding: 20px;
+}
+
+.onboarding-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    padding: 40px 30px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+/* --- Typographie et Texte --- */
+.welcome-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.logo-m {
+    color: #06A664; /* Vert */
+}
+.logo-fund {
+    color: #000;
+}
+
+.description-text {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.motto-text {
+    font-size: 18px;
+    font-weight: 500;
+    color: #06A664; /* Vert */
+    margin-bottom: 40px;
+}
+
+.question-text {
+    font-size: 20px;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+/* =========================================================
+   GRILLE DE SÉLECTION DE RÔLE (La clé de la réactivité)
+   ========================================================= */
+
+.role-selection-grid {
+    display: grid;
+    /* 3 colonnes de taille égale */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 25px; /* Espace entre les cartes */
+    max-width: 750px; /* Limite la largeur de la grille */
+    margin: 0 auto; /* Centre la grille */
+}
+
+.role-card {
+    /* Bouton et carte */
+    background: #06A664; /* Vert */
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 20px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 150px; /* Hauteur fixe pour l'esthétique */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.role-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.role-card i {
+    /* Icône (fa-user, fa-building, etc.) */
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+
+.role-card span {
+    /* Texte du rôle */
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* =========================================================
+   MEDIA QUERY (Passage à une seule colonne sur mobile)
+   ========================================================= */
+@media (max-width: 650px) {
+    /* La grille passe d'une mise en page 3 colonnes à 1 seule colonne empilée */
+    .role-selection-grid {
+        grid-template-columns: 1fr; 
+        gap: 15px; /* Réduit l'espace entre les cartes empilées */
+    }
+
+    .role-card {
+        height: 100px; /* Réduit légèrement la hauteur pour gagner de la place */
+        flex-direction: row; /* Les icônes et le texte se mettent côte à côte */
+        justify-content: flex-start;
+        padding-left: 30px;
+    }
+    
+    .role-card i {
+        font-size: 30px;
+        margin-right: 20px;
+        margin-bottom: 0;
+    }
+
+    .welcome-title {
+        font-size: 24px;
+    }
+    
+    .motto-text {
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 400px) {
+    .onboarding-card {
+        padding: 20px 15px; /* Réduit le padding de la carte principale */
+    }
+}
