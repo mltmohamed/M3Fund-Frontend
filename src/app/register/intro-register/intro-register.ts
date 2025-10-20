@@ -13,4 +13,10 @@ export class IntroRegister {
   goToRegisterIndividu(){
     this.router.navigate(['/registerIndividu']);
   }
+    goToRegisterAssociation(){
+    this.router.navigate(['/registerAssociation']);
+  }
+    goToRegisterEnterprise(){
+    this.router.navigate(['/registerEnterprise']);
+  }
 }

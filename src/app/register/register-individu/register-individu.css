@@ -15,12 +15,15 @@ body {
 
 .onboarding-page {
     /* Le conteneur parent pour positionner le bouton Retour */
-    position: relative;
-    width: 95%;
-    max-width: 1200px; /* LARGEUR MAXIMALE ÉLARGIE */
-    padding: 30px; 
+    /* position: relative; */
+    /* width: 95%; */
+    /* max-width: 2400px;  */
+    /* padding: 30px;  */
     /* Marge en haut pour faire de la place au bouton retour (top: 0) */
-    margin-top: 50px; 
+    /* margin-top: 50px;  */
+    display: flex;
+    border: 1px solid black;
+    width: 100%;
 }
 
 .registration-card {

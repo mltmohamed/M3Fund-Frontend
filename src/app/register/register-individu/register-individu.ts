@@ -46,7 +46,7 @@ export class RegisterIndividu {
    */
   goBack(): void {
     // Exemple de navigation vers la page précédente ou une page spécifique
-    // window.history.back(); // Pour revenir à la page précédente
+    window.history.back(); // Pour revenir à la page précédente
     // Ou utilisez le Router Angular:
     // this.router.navigate(['/accueil']); 
     console.log('Action de retour déclenchée.');
