@@ -1,5 +1,5 @@
 /* =========================================================
-   STYLES GÉNERAUX ET CONTENEUR (Dimensions ÉLARGIES)
+   STYLES GÉNERAUX ET CONTENEUR
    ========================================================= */
 
 body {
@@ -14,59 +14,32 @@ body {
 }
 
 .onboarding-page {
-    /* Le conteneur parent pour positionner le bouton Retour */
-    /* position: relative; */
-    /* width: 95%; */
-    /* max-width: 2400px;  */
-    /* padding: 30px;  */
-    /* Marge en haut pour faire de la place au bouton retour (top: 0) */
-    /* margin-top: 50px;  */
-    display: flex;
-    border: 1px solid black;
-    width: 100%;
+    position: relative; 
+    width: 95%;
+    max-width: 1200px; 
+    padding: 30px; 
+    margin-top: 0; 
 }
 
 .registration-card {
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 15px;
-    height: 500px;
-    width: 700px;
-    /* Padding intérieur ÉLARGI */
+    height: auto; 
+    width: 100%; 
     padding: 60px 80px; 
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
-/* --- Têtes de section --- */
-.logo {
-    text-align: left;
-    font-size: 26px;
-    font-weight: 700;
-    margin-bottom: 30px; 
-}
-.logo-m { color: #06A664; }
-.logo-fund { color: #000; }
-
-.form-title {
-    font-size: 32px;
-    font-weight: 600;
-    margin-bottom: 10px; 
-}
-.form-subtitle {
-    font-size: 15px;
-    color: #666;
-    margin-bottom: 40px; 
-}
 
 /* =========================================================
-   BOUTON RETOUR (HORS CADRE)
+   1. BOUTON RETOUR (POSITIONNEMENT CORRIGÉ)
    ========================================================= */
 
 .back-btn {
     position: absolute; 
-    /* Positionné dans le coin supérieur gauche de .onboarding-page */
-    top: 0;         
     left: 30px;    
+    top: -50px; /* Remonté au-dessus de la carte */
     
     background: transparent; 
     color: #666;             
@@ -94,20 +67,61 @@ body {
 
 
 /* =========================================================
-   GRILLE DU FORMULAIRE (DESKTOP - 2 COLONNES)
+   HEADER (Logo et Titre alignés)
    ========================================================= */
+
+.header-section {
+    display: flex;
+    justify-content: space-between; 
+    align-items: flex-start;
+    margin-bottom: 20px; 
+}
+
+.logo {
+    text-align: left;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 0; 
+}
+.logo-m { color: #06A664; }
+.logo-fund { color: #000; }
+
+.title-block {
+    text-align: right; 
+}
+
+.form-title {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 5px; 
+}
+.form-subtitle {
+    font-size: 15px;
+    color: #666;
+    margin-bottom: 0; 
+}
+
+
+/* =========================================================
+   GRILLE ET CHAMPS (OPTIMISATION D'ESPACE)
+   ========================================================= */
+
+.registration-form {
+    margin-top: 20px;
+}
+
 .form-fields {
     display: grid;
+    /* 7 champs à gauche, 4 + photo à droite. */
     grid-template-columns: 1fr 1fr; 
-    gap: 35px 70px; /* Espacement augmenté */
+    /* Gap ajusté pour que tous les champs tiennent */
+    gap: 20px 70px; /* Réduction du gap vertical */
 }
 
 .input-group {
     display: flex;
     flex-direction: column;
-    width: 300px;
-    /* height: 20px; */
-    /* border: 1px solid #000; */
+    width: 100%; 
 }
 
 .input-group label {
@@ -117,29 +131,26 @@ body {
     color: #333;
 }
 
-/* Style des champs de texte et de mot de passe (taille ÉLARGIE) */
 .input-group input:not([type="file"]):not(.actual-profile-file-input) {
-    padding: 14px; 
+    padding: 12px; 
     border: 1px solid #ccc;
     border-radius: 6px; 
-    font-size: 1px; 
+    font-size: 15px; 
+    width: 100%; 
+    box-sizing: border-box; 
 }
 
-.input-group .optional {
-    color: #aaa;
-    font-weight: 400;
-    font-style: italic;
-    margin-left: 5px;
-}
+/* =========================================================
+   3. CHAMPS D'UPLOAD DE FICHIERS (Amélioration du style)
+   ========================================================= */
 
-/* --- Champs d'upload de Documents (file) --- */
 .file-input-container {
     position: relative;
     display: flex;
 }
 
 .actual-file-input {
-    /* Cache l'input natif tout en le rendant cliquable */
+    /* Input réel caché mais cliquable */
     position: absolute;
     width: 100%;
     height: 100%;
@@ -149,54 +160,74 @@ body {
 }
 
 .file-placeholder {
-    /* Le faux input stylisé (taille ÉLARGIE) */
+    /* Le faux input stylisé (design plat) */
     display: flex;
-    justify-content: space-between; /* Pour séparer texte et icône */
+    justify-content: space-between; 
     align-items: center;
     width: 100%;
-    padding: 14px; 
+    padding: 12px; 
     border: 1px solid #ccc;
     border-radius: 6px; 
-    font-size: 16px; 
+    font-size: 15px; 
     color: #999;
-    background: #fff;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    background: #fdfdfd; /* Léger fond pour l'upload */
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+.file-placeholder:hover {
+    border-color: #ffca28;
+    cursor: pointer;
 }
 
 .file-placeholder i {
-    color: #333;
+    color: #06A664; /* Couleur d'icône plus visible */
+    font-size: 18px;
     margin-left: 10px;
 }
 
-/* --- Photo de Profil (taille ÉLARGIE) --- */
+.file-placeholder .filename {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(100% - 30px); /* Laisse de la place à l'icône */
+}
+
+/* =========================================================
+   2. PHOTO DE PROFIL (Correction de la grille et style)
+   ========================================================= */
+
 .profile-upload-area {
+    /* Positionnement dans la grille */
     grid-column: 2 / 3; 
-    grid-row: 5 / span 3;
+    /* S'étend pour couvrir l'espace nécessaire */
+    grid-row: 5 / span 4;
+    
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start; /* Aligné à gauche de la colonne droite */
     align-items: flex-start;
-    padding-top: 15px; 
+    padding-top: 5px; 
 }
 
 .profile-upload {
     display: flex;
     flex-direction: column;
-    align-items: center; 
+    align-items: flex-start; /* Changé pour aligner le label à gauche (comme les autres) */
     margin-top: 5px; 
 }
 
 .profile-label {
     font-size: 15px;
     font-weight: 500;
-    margin-bottom: 15px; 
+    margin-bottom: 10px; 
 }
 
 .photo-container {
-    width: 140px; /* TAILLE DE LA PHOTO ÉLARGIE */
+    width: 140px; 
     height: 140px; 
     position: relative;
+    /* Centrer la photo si l'align-items est à flex-start */
+    margin-left: 20px; 
 }
 
 .profile-pic {
@@ -204,7 +235,7 @@ body {
     height: 100%;
     border-radius: 50%;
     object-fit: cover;
-    border: 4px solid #06A664; /* Bordure plus épaisse */
+    border: 4px solid #06A664; 
 }
 
 .actual-profile-file-input {
@@ -212,7 +243,6 @@ body {
 }
 
 .upload-icon-label {
-    /* Style du bouton/icône de l'appareil photo */
     position: absolute;
     bottom: 5px;
     right: 5px;
@@ -240,11 +270,11 @@ body {
     color: #333; 
     border: none;
     border-radius: 8px;
-    padding: 14px 40px; /* Padding augmenté */
+    padding: 14px 40px; 
     font-size: 18px; 
     font-weight: 600;
     cursor: pointer;
-    margin-top: 40px; 
+    margin-top: 30px; 
     float: right; 
     box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
     transition: background 0.2s;
@@ -255,12 +285,24 @@ body {
 }
 
 /* =========================================================
-   MEDIA QUERY (MOBILE - 1 COLONNE)
+   MEDIA QUERY (MOBILE)
    ========================================================= */
 @media (max-width: 768px) {
+    /* Styles mobile inchangés */
     .onboarding-page {
         margin-top: 30px; 
         padding: 10px;
+    }
+
+    .header-section {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 20px;
+    }
+    
+    .title-block {
+        text-align: left;
+        margin-top: 10px;
     }
     
     .registration-card {
@@ -280,12 +322,19 @@ body {
         padding-top: 0;
     }
     
+    .profile-upload {
+        align-items: center; /* Recentrer sur mobile */
+    }
+
+    .profile-upload .photo-container {
+        margin-left: 0;
+    }
+    
     .register-btn {
         width: 100%; 
         float: none;
     }
     
-    /* Positionnement du bouton de retour sur mobile */
     .back-btn {
         top: 0;
         left: 10px;
